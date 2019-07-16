@@ -1,5 +1,7 @@
 {
   "name": "listaTareas",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
