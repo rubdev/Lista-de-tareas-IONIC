@@ -9,7 +9,7 @@ import { TareasService } from 'src/app/services/tareas.service';
 export class Tab1Page {
 
   constructor( _tareasService: TareasService ) {
-    console.log('Servicio inicializado en tab1');
+    console.log('-> Servicio tareas inicializado');
     
   }
 

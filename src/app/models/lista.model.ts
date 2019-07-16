@@ -1,3 +1,6 @@
+import { ListaItem } from './lita-item.model';
+
+
 export class Lista {
 
     id: number;

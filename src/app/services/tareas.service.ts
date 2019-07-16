@@ -7,7 +7,7 @@ import { Lista } from '../models/lista.model';
 })
 export class TareasService {
 
-  listas: Lista[];;
+  listas: Lista[];
 
   constructor() { }
 }
