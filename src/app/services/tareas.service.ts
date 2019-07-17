@@ -10,9 +10,29 @@ export class TareasService {
   listas: Lista[] = [];
 
   constructor() {
-    const listaCompra = new Lista ( 'Lista de la compra' );
-    const listaJuegos = new Lista ( 'Videojuegos que quiero jugar' );
-    this.listas.push( listaCompra, listaJuegos );
-    console.log(this.listas);
+    this.cargarStorage();
+   }
+
+  crearLista( titulo: string ) {
+    const nuevaLista = new Lista ( titulo );
+    this.listas.push( nuevaLista );
+    this.guardarEnStorage();
+    return nuevaLista.id;
   }
+
+  cargarLista( id: number | string ) {
+    let idLista: number = Number(id);
+    return this.listas.find( datosLista => datosLista.id === idLista ); 
+  }
+
+  guardarEnStorage() {
+    localStorage.setItem( 'datos', JSON.stringify(this.listas) );
+  }
+
+  cargarStorage() {
+    if ( localStorage.getItem( 'datos' ) ) {
+      this.listas = JSON.parse( localStorage.getItem( 'datos' ) );
+    }
+  }
+
 }
