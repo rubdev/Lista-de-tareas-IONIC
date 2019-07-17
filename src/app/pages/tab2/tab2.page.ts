@@ -8,6 +8,6 @@ import { TareasService } from 'src/app/services/tareas.service';
 })
 export class Tab2Page {
 
-  constructor( _tareasService: TareasService ) { }
+  constructor( public tareasService: TareasService ) { }
 
 }

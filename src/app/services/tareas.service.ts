@@ -7,7 +7,12 @@ import { Lista } from '../models/lista.model';
 })
 export class TareasService {
 
-  listas: Lista[];
+  listas: Lista[] = [];
 
-  constructor() { }
+  constructor() {
+    const listaCompra = new Lista ( 'Lista de la compra' );
+    const listaJuegos = new Lista ( 'Videojuegos que quiero jugar' );
+    this.listas.push( listaCompra, listaJuegos );
+    console.log(this.listas);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TareasService } from 'src/app/services/tareas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -8,9 +9,12 @@ import { TareasService } from 'src/app/services/tareas.service';
 })
 export class Tab1Page {
 
-  constructor( _tareasService: TareasService ) {
+  constructor( public tareasService: TareasService, private router: Router ) {
     console.log('-> Servicio tareas inicializado');
-    
+  }
+
+  aNuevaLista() {
+    this.router.navigateByUrl('/tabs/tab1/agregar');
   }
 
 }
