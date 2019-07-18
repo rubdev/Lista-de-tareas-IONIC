@@ -22,7 +22,7 @@ export class TareasService {
 
   cargarLista( id: number | string ) {
     let idLista: number = Number(id);
-    return this.listas.find( datosLista => datosLista.id === idLista ); 
+    return this.listas.find( datosLista => datosLista.id === idLista );
   }
 
   guardarEnStorage() {
