@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { TareasService } from 'src/app/services/tareas.service';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { Lista } from 'src/app/models/lista.model';
 
 @Component({
   selector: 'app-tab1',
@@ -11,44 +10,36 @@ import { Lista } from 'src/app/models/lista.model';
 })
 export class Tab1Page {
 
-  constructor( public tareasService: TareasService, private router: Router, private alertController: AlertController ) {
-    console.log('-> Servicio tareas inicializado');
-  }
+  constructor( public tareasService: TareasService, private router: Router, private alertController: AlertController ) { }
 
   async aNuevaLista() {
       const alert = await this.alertController.create({
-        header: 'Nueva lista',
-        inputs: [
-          {
-            name: 'titulo',
-            type: 'text',
-            placeholder: 'Título de la lista'
-          }
-        ],
-        buttons: [
-          {
-            text: 'Cancelar',
-            role: 'cancel'
-          },
-          {
-            text: 'Guardar',
-            handler: ( data ) => {
-              console.log(data);
-              if ( data.titulo.length > 0 ) {
-                const idLista = this.tareasService.crearLista( data.titulo );
-                this.router.navigateByUrl(`/tabs/tab1/agregar/${ idLista }`);
-              }
+      header: 'Nueva lista',
+      inputs: [
+        {
+          name: 'titulo',
+          type: 'text',
+          placeholder: 'Título de la lista'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Guardar',
+          handler: ( data ) => {
+            console.log(data);
+            if ( data.titulo.length > 0 ) {
+              const idLista = this.tareasService.crearLista( data.titulo );
+              this.router.navigateByUrl(`${ this.router.url }/agregar/${ idLista }`);
             }
           }
-        ]
-      });
-  
-      await alert.present();
-  }
+        }
+      ]
+    });
 
-  listaSeleccionada( lista: Lista ) {
-    const idLista = lista.id;
-    this.router.navigateByUrl(`/tabs/tab1/agregar/${ idLista }`);
+    await alert.present();
   }
-
 }

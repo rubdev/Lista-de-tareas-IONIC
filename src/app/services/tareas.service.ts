@@ -25,6 +25,12 @@ export class TareasService {
     return this.listas.find( datosLista => datosLista.id === idLista );
   }
 
+  borrarLista( lista: Lista ) {
+    const index = this.listas.indexOf( lista );
+    this.listas.splice( index, 1);
+    this.guardarEnStorage();
+  }
+
   guardarEnStorage() {
     localStorage.setItem( 'datos', JSON.stringify(this.listas) );
   }
