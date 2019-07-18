@@ -3,7 +3,8 @@ import { Lista } from '../models/lista.model';
 
 
 @Pipe({
-  name: 'filtro'
+  name: 'filtro',
+  pure: false
 })
 export class FiltroPipe implements PipeTransform {
 
