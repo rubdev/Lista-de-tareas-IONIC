@@ -29,7 +29,7 @@ export class ListasComponent {
     this.tareasService.borrarLista( lista );
   }
 
-  editarNombre( lista: Lista ) {
+  async editarNombre( lista: Lista ) {
     console.log(lista);
     const alert = await this.alertController.create({
       header: 'Editar título',
